@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header{
+    background-color: #37bbed;
+    display: flex;
+    margin: auto;
+    height:100px ;
+}
+.alinear{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.img-escudo{
+    width: 30px;
+    height: 55px;
+    margin: 10px;
+    margin-left: 40px;
+}
+.texto1{
+    font-size: 30px;
+    margin-left: 40px;
+    color: #fff;
+}
+.derecha{
+
+    text-align: left;
+    margin-left: 1300px;
+    padding: 5px 25px;
+    border-radius: 25px;
+    background-color: #fff;
+    color: black;
+}
+.baner{
+    width: 100%;
+    height: 300px;
+    margin-bottom: 50px;
+}
+.navegacion{
+    display: flex;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+}
+.navegacion ul {
+    display: flex;
+    margin: auto;
+}
+.navegacion ul li {
+    margin: 10px;
+    text-decoration: none;
+    list-style: none;
+
+}
+.navegacion ul li a {
+    text-decoration: none;
+    margin: 4px;
+    font-size: 15px;
+    color: #fff;
+    font-size: 20px;
+
+}
+.transparencia{
+    display: flex;
+    position: absolute;
+    top: 100px;
+    background-color: black;
+    width: 100%;
+    height: 50px;
+    opacity: 0.6;
+}
+footer{
+display: flex;
+position: absolute;
+bottom: 50px;
+background-color: #37bbed;
+width: 100%;
+height: 100px;
+}
+.black{
+    font-size: 40px;
+    margin: 0px 5px 0px 200px;
+}
+.withe{
+    font-size: 40px;
+    color: #fff;
+}
+
+/* ------------------------------------------------ */
+
+.agregar {
+    font-size: 20px;
+    padding: 2px 5px;
+    background-color: rgb(13, 174, 13);
+    color: white;
+    margin-left: 80px;
+}
+
+
+
+.link {
+    text-align: center;
+}
+
+.linkNombres {
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.h2-header {
+    text-decoration: none;
+    color: beige;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+
+}
+
+.div-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    color: aliceblue;
+    background-color: rgb(31, 29, 29);
+
+
+}
+
+.h2-alinear {
+    margin-left: 80px;
+}
+
+
+
+.negrita {
+    font-weight: bold;
+}
+
+.color {
+    background-color: beige;
+}
+
+.ajustar {
+
+    margin-left: 30%;
+    width: 600px;
+    text-align: center;
+}
