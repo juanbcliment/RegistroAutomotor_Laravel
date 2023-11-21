@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Infracciones;
 use Illuminate\Http\Request;
 
 class InfraccionesController extends Controller
@@ -11,7 +12,9 @@ class InfraccionesController extends Controller
      */
     public function index()
     {
-        return view('infracciones.infracciones');
+        $infracciones = Infracciones::orderBy("created_at", "desc")->paginate(15);
+        return view('infracciones.infracciones', ['infracciones' => $infracciones]);
+
     }
 
     /**

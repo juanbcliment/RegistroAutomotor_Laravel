@@ -40,11 +40,11 @@
     @yield('content')
 </main>
 
-<footer>
+{{-- <footer>
 <div class="alinear">
 <h3 class="black">Argentina</h3>
 <h3 class="withe">unida</h3>
 </div>
-</footer>
+</footer> --}}
 </body>
 </html>

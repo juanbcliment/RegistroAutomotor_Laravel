@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Autos;
 use Illuminate\Http\Request;
 
 class AutosController extends Controller
@@ -11,7 +12,8 @@ class AutosController extends Controller
      */
     public function index()
     {
-        return view('autos.autos');
+        $autos = Autos::orderBy("created_at", "desc")->paginate(10);
+        return view('autos.autos', ['autos' => $autos]);
     }
 
     /**
