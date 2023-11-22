@@ -1,13 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TitularesController;
 use App\Http\Controllers\AutosController;
 use App\Http\Controllers\InfraccionesController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TitularesController;
-use App\Models\Autos;
-use App\Models\Infracciones;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,15 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('autos', AutosController::class);
     Route::resource('infracciones', InfraccionesController::class);
 
+
 });
 
 require __DIR__.'/auth.php';
-
-
-
-
-
-
-
-
-

@@ -23,9 +23,12 @@
     margin-left: 40px;
 }
 .texto1{
+    display: flex;
+    position: absolute;
     font-size: 30px;
     margin-left: 40px;
     color: #fff;
+    text-align: center;
 }
 .derecha{
 

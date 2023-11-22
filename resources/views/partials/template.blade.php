@@ -20,6 +20,7 @@
 
             <a class="texto1 derecha" href="/profile">Usuario</a>
         </div>
+        <a class="texto1 derecha" href="/register">Registrarce</a>
 
     </div>
 
