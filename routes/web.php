@@ -5,6 +5,7 @@ use App\Http\Controllers\InfraccionesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TitularesController;
 use App\Models\Autos;
+use App\Models\Infracciones;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('titulares', TitularesController::class);
+    Route::resource('autos', AutosController::class);
+    Route::resource('infracciones', InfraccionesController::class);
+
 });
 
 require __DIR__.'/auth.php';
@@ -37,12 +43,8 @@ require __DIR__.'/auth.php';
 
 
 
-Route::resource('autos', AutosController::class);
 
-Route::controller(InfraccionesController::class)->group(function () {
-    Route::get('infracciones', 'index');
-    Route::get('infracciones/create', 'create');
-    Route::get('infracciones/edit/{id}', 'edit');
-});
 
-Route::resource('titulares', TitularesController::class);
+
+
+

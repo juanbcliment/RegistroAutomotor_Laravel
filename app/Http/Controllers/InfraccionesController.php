@@ -12,18 +12,15 @@ class InfraccionesController extends Controller
      */
     public function index()
     {
-        $infracciones = Infracciones::orderBy("created_at", "desc")->paginate(15);
-        return view('infracciones.infracciones', ['infracciones' => $infracciones]);
-
+        return view('infracciones.infracciones', ['infracciones' => Infracciones::orderBy("created_at", "desc")->paginate(15)]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Infracciones $infraccion)
     {
-        $infracciones = Infracciones::orderBy("created_at", "desc")->paginate(15);
-        return view('infracciones.infracciones-create', ['infracciones' => $infracciones]);
+        return view('infracciones.infracciones-create', compact('infraccion'));
     }
 
     /**
@@ -31,7 +28,16 @@ class InfraccionesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'auto_id' => 'required',
+            'fecha' => 'required',
+            'descripcion' => 'required',
+            'tipo' => 'required',
+
+         ]);
+         Infracciones::create($request->all());
+
+        return redirect()->route('infracciones.index');
     }
 
     /**
@@ -47,7 +53,8 @@ class InfraccionesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $infraccion = Infracciones::find($id);
+        return view('infracciones.infracciones-edit', compact('infraccion'));
     }
 
     /**
@@ -55,7 +62,21 @@ class InfraccionesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'auto_id' => 'required',
+            'fecha' => 'required',
+            'descripcion' => 'required',
+            'tipo' => 'required',
+
+         ]);
+         $infraccion = infracciones::find($id);
+         $infraccion->update([
+             'auto_id' => $request->auto_id,
+             'fecha' => $request->fecha,
+             'descripcion' => $request->descripcion,
+             'tipo' => $request->tipo,
+         ]);
+         return redirect()->route('infracciones.index');
     }
 
     /**
@@ -63,6 +84,8 @@ class InfraccionesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $infraccion = Infracciones::find($id);
+        $infraccion->delete();
+        return back();
     }
 }

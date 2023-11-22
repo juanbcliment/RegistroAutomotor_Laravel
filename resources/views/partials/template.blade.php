@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     @vite('resources/css/app.css')
-    <link rel="logo" href="../img/logo.webp">
+    <link rel="logo" href="{{ asset('img/logo.webp')}}">
     <title>@yield('title')</title>
 
 </head>
@@ -15,7 +15,7 @@
 <header>
     <div class="header">
         <div class="alinear">
-            <img class="img-escudo" src="../img/pngwing.png" alt="">
+            <img class="img-escudo" src="{{ asset('img/pngwing.png')}}" alt="">
             <a href="/"><h1 class="alinear texto1">Agentina.gob.ar</h1></a>
 
             <a class="texto1 derecha" href="/profile">Usuario</a>
@@ -25,7 +25,7 @@
 
     <div>
 
-        <img class="baner" src="../img/Banner-rnpa.png" alt="">
+        <img class="baner" src="{{ asset('img/Banner-rnpa.png')}}" alt="">
     </div>
     <div class="transparencia"></div>
     <nav class="navegacion">
@@ -40,7 +40,7 @@
     @yield('content')
 </main>
 
-{{-- <footer>
+{{--  <footer>
 <div class="alinear">
 <h3 class="black">Argentina</h3>
 <h3 class="withe">unida</h3>
