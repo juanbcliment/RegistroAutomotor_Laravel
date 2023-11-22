@@ -4,6 +4,7 @@ use App\Http\Controllers\AutosController;
 use App\Http\Controllers\InfraccionesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TitularesController;
+use App\Models\Autos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,19 +36,13 @@ require __DIR__.'/auth.php';
 
 
 
-Route::controller(AutosController::class)->group(function () {
-    Route::get('autos', 'index');
-    Route::get('autos/create', 'create');
-    Route::get('autos/edit/{id}', 'edit');
-});
+
+Route::resource('autos', AutosController::class);
+
 Route::controller(InfraccionesController::class)->group(function () {
     Route::get('infracciones', 'index');
     Route::get('infracciones/create', 'create');
     Route::get('infracciones/edit/{id}', 'edit');
 });
 
-Route::controller(TitularesController::class)->group(function () {
-    Route::get('titulares', 'index');
-    Route::get('titulares/create', 'create');
-    Route::get('titulares/edit/{id}', 'edit');
-});
+Route::resource('titulares', TitularesController::class);

@@ -8,7 +8,7 @@
 
 @section('content')
       <H2 class="h2-alinear">Infracciones</H2>
-    <a href="create.php" class="agregar">+ Agregar movimientos</a>
+    <a href="/infracciones/create" class="agregar">+ Agregar movimientos</a>
 
     <div class="row justify-content-md-center">
         <div class="col-md-11">

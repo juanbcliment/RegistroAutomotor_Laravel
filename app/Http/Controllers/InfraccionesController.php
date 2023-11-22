@@ -22,7 +22,8 @@ class InfraccionesController extends Controller
      */
     public function create()
     {
-        //
+        $infracciones = Infracciones::orderBy("created_at", "desc")->paginate(15);
+        return view('infracciones.infracciones-create', ['infracciones' => $infracciones]);
     }
 
     /**

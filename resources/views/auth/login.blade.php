@@ -1,7 +1,6 @@
 @extends('partials.template')
-@section('title')
-   Login
-@endsection
+@section('title', 'Login')
+
 @section('content')
 <x-guest-layout>
     <!-- Session Status -->

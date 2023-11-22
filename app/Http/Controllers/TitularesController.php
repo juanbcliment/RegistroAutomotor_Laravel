@@ -12,16 +12,16 @@ class TitularesController extends Controller
      */
     public function index()
     {
-        $titulares = Titulares::orderBy("created_at", "desc")->paginate(15);
-        return view('titulares.titulares', ['titulares' => $titulares]);
+
+        return view('titulares.titulares', ['titulares' => Titulares::orderBy("created_at", "desc")->paginate(15)]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Titulares $titular)
     {
-        //
+        return view('titulares.titulares-create', compact('titular'));
     }
 
     /**
@@ -29,7 +29,16 @@ class TitularesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'apellido' => 'required',
+            'nombre' => 'required',
+            'dni' => 'required',
+            'domicilio' => 'required',
+
+         ]);
+         Titulares::create($request->all());
+
+        return redirect()->route('titulares.index');
     }
 
     /**
@@ -43,24 +52,43 @@ class TitularesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $titular = Titulares::find($id);
+        return view('titulares.titulares-edit', compact('titular'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+           'apellido' => 'required',
+           'nombre' => 'required',
+           'dni' => 'required',
+           'domicilio' => 'required',
+
+        ]);
+        $titular = Titulares::find($id);
+        $titular->update([
+            'apellido' => $request->apellido,
+            'nombre' => $request->nombre,
+            'dni' => $request->dni,
+            'domicilio' => $request->domicilio,
+        ]);
+        return redirect()->route('titulares.index');
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $titular = Titulares::find($id);
+        $titular->delete();
+        return back();
     }
 }

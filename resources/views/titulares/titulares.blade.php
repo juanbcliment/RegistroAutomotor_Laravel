@@ -8,7 +8,7 @@
     <br><br>
     <!-- mensaje de que se guardo el movimiento -->
 
-    <a href="create.php" class="agregar">+ Agregar movimientos</a>
+    <a href="{{ route('titulares.create') }}" class="agregar">+ Agregar movimientos</a>
 
     <div class="row justify-content-md-center">
         <div class="col-md-11">
@@ -20,9 +20,9 @@
                         <th>Nombre</th>
                         <th>DNI</th>
                         <th>Domicilio</th>
-                        <th>Tipo</th>
                         <th>Fecha de ingreso</th>
                         <th>Actualizado</th>
+                        <th>Editar|Borrar|Detalle</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,16 +32,38 @@
                             <td>{{ $titular->apellido }}</td>
                             <td>{{ $titular->nombre }}</td>
                             <td>{{ $titular->dni }}</td>
-                            <td>{{ $titular->patente }}</td>
                             <td>{{ $titular->domicilio }}</td>
                             <td>{{ $titular->created_at }}</td>
                             <td>{{ $titular->update_at }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                            <td class="link">
+                                <div class="crud">
+                                    <ul>
+                                        <li>
+                                            <a href="{{ route('titulares.edit', $titular) }}" class="btn btn-primary"><i
+                                                    class="fas fa-edit"></i></a>
+                                        </li>
+                                        <li>
+                                            <form action="{{ route('titulares.destroy', $titular->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="button" type="submit" {{ $titular->id }}
+                                                    onclick="return confirm('Estas seguro?')"><i
+                                                        class="btn btn-danger far fa-file-alt"></i></button>
+                                            </form>
+                                        </li>
+                                        <li>
+                                            <a href="detalle.php?id_mov=" class="btn btn-info "><i
+                                                    class="far fa-file-alt"></i></a>
+                                        </li>
+                            </td>
+                            </ul>
         </div>
-        {{ $titulares->links() }}
+        </tr>
+        @endforeach
+        </tbody>
+        </table>
     </div>
-
+    {{ $titulares->links() }}
+    </div>
+    {{--  <i class="far fa-trash-alt btn btn-danger "> </i> --}}
 @endsection

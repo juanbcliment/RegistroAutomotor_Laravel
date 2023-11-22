@@ -12,16 +12,18 @@ class AutosController extends Controller
      */
     public function index()
     {
-        $autos = Autos::orderBy("created_at", "desc")->paginate(10);
-        return view('autos.autos', ['autos' => $autos]);
+        return view('autos.autos', ['autos' => Autos::orderBy("created_at", "desc")->paginate(15)]);
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Autos $auto)
     {
-        return view('autos.autos-create');
+        return view('autos.autos-create', compact('auto'));
+
+
     }
 
     /**
@@ -29,7 +31,17 @@ class AutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titular_id' => 'required',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'patente' => 'required',
+            'tipo' => 'required',
+
+         ]);
+         Autos::create($request->all());
+
+        return redirect()->route('autos.index');
     }
 
     /**
@@ -45,7 +57,8 @@ class AutosController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $auto = Autos::find($id);
+        return view('autos.autos-edit', compact('auto'));
     }
 
     /**
@@ -53,7 +66,23 @@ class AutosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'titular_id' => 'required',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'patente' => 'required',
+            'tipo' => 'required',
+
+         ]);
+         $titular = Autos::find($id);
+         $titular->update([
+             'titular_id' => $request->titular_id,
+             'marca' => $request->marca,
+             'modelo' => $request->modelo,
+             'patente' => $request->patente,
+             'tipo' => $request->tipo,
+         ]);
+         return redirect()->route('autos.index');
     }
 
     /**
@@ -61,6 +90,8 @@ class AutosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $auto = autos::find($id);
+        $auto->delete();
+        return back();
     }
 }
